@@ -1,7 +1,8 @@
-import type { JSX } from 'react'
+//import type { JSX } from 'react'
 import './App.css'
-import PrintMovie from './components/PrintMovie'
+//import PrintMovie from './components/PrintMovie/PrintMovie'
 import { mockMovie, movieList } from './mocks/movies.mocks'
+import MovieList from './components/PrintMovie/MovieList'
 /*
 function PrintMovie(): JSX.Element{
   return(
@@ -17,7 +18,7 @@ function PrintMovie(): JSX.Element{
 function App() {
  return (
    <>
-    <h1>Catálogo de Peliculas Accenture</h1>
+    {/* <h1>Catálogo de Peliculas Accenture</h1>
     <hr/>
     <h1><PrintMovie movie={mockMovie}/></h1>    
 
@@ -38,7 +39,9 @@ function App() {
             movie.description.includes("to") ? (<PrintMovie key={movie.id} movie={movie} />) : null
        
        
-        ))}
+        ))} */}
+
+        <MovieList movies = {movieList}/>
 
    </>
    
