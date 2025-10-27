@@ -17,10 +17,14 @@ function MovieList({movies}: MovieListProps): JSX.Element{
         }, 2000)
     }, [movies]);
 
-    const filteredMovies = showRecent
-    ? movieData.filter((movie) => movie.releaseDate.getFullYear() > 2025 )
-    : movieData;
-
+   // const filteredMovies = showRecent
+   // ? movieData.filter((movie) => movie.releaseDate.getFullYear() > 2025 )
+   // : movieData;
+    const filteredMovies = useCallback(() =>{
+        return showRecent
+            ? movieData.filter((movie) => movie.releaseDate.getFullYear() > 2025 )
+            : movieData;
+    }, [showRecent,movieData])
     
     if(loading){
         return <p>Cargando Peliculas ... </p>;
@@ -34,8 +38,8 @@ function MovieList({movies}: MovieListProps): JSX.Element{
             <p>
                 Bienvenido {username}!
             </p>
-            {filteredMovies.length > 0 
-            ? filteredMovies.map((movie: Movie) => (
+            {filteredMovies().length > 0 
+            ? filteredMovies().map((movie: Movie) => (
                 <PrintMovie key = {movie.id} movie = { movie} />
                 ))
             : 
