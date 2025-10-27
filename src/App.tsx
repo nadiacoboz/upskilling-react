@@ -1,8 +1,8 @@
 //import type { JSX } from 'react'
 import './App.css'
 //import PrintMovie from './components/PrintMovie/PrintMovie'
-import { mockMovie, movieList } from './mocks/movies.mocks'
 import MovieList from './components/PrintMovie/MovieList'
+import { movieList } from './mocks/movies.mocks'
 /*
 function PrintMovie(): JSX.Element{
   return(
@@ -18,13 +18,13 @@ function PrintMovie(): JSX.Element{
 function App() {
  return (
    <>
-    {/* <h1>Catálogo de Peliculas Accenture</h1>
+    <h1>Catálogo de Peliculas Accenture</h1>
     <hr/>
-    <h1><PrintMovie movie={mockMovie}/></h1>    
-
+    {/* <h1><PrintMovie movie={mockMovie}/></h1>    
+ 
   <h1>Catálogo en Json </h1>
    {JSON.stringify(movieList)}
-
+ 
     <h1>Movies mayor a 2024 </h1>
     {
       movieList
@@ -33,19 +33,19 @@ function App() {
         <PrintMovie key={movie.id} movie = {movie} />
       )
       )}
-
+ 
     <h1>Movies con palabra clave </h1>
       {movieList.map((movie) => (
             movie.description.includes("to") ? (<PrintMovie key={movie.id} movie={movie} />) : null
        
        
         ))} */}
-
+ 
         <MovieList movies = {movieList}/>
-
+ 
    </>
    
  )
 }
-
+ 
 export default App
