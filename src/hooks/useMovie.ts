@@ -16,7 +16,7 @@ function useMovies(MovieListProps: Movie[]): UseMoviesResult {
 
   const filteredMovies = useCallback(() => {
     return showRecent
-      ? movieData.filter((movie) => movie.releaseDate.getFullYear() > 2024)
+      ? movieData.filter((movie) => movie.releaseDate.getFullYear() > 2025)
       : movieData;
   }, [showRecent, movieData]);
 
