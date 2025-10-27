@@ -1,55 +1,55 @@
-import { useCallback, useEffect, useState, type JSX } from "react"
+//import { useCallback, useEffect, useState, type JSX } from "react"
+import { type JSX } from "react"
 import type { MovieListProps } from "./types";
 import PrintMovie from "./PrintMovie";
 import type { Movie } from "../../types/movie";
 import useUser from "../../hooks/useUser";
+import useMovies from "../../hooks/useMovie";
 
 function MovieList({movies}: MovieListProps): JSX.Element{
-    const [showRecent, setShowRecent] = useState<boolean>(false);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [movieData, setMovieData] = useState<Movie[]>([]);
+    // const [showRecent, setShowRecent] = useState<boolean>(false);
+    // const [loading, setLoading] = useState<boolean>(true);
+    // const [movieData, setMovieData] = useState<Movie[]>([]);
+    const {loading, movies: filteredMovies, showRecent, toggleShowRecent} = useMovies(movies);
     const {username} = useUser();
     
-    useEffect(() => {
-        setTimeout(() => {
-            setMovieData(movies);
-            setLoading(false);
-        }, 2000)
-    }, [movies]);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setMovieData(movies);
+    //         setLoading(false);
+    //     }, 2000)
+    // }, [movies]);
 
    // const filteredMovies = showRecent
    // ? movieData.filter((movie) => movie.releaseDate.getFullYear() > 2025 )
    // : movieData;
-    const filteredMovies = useCallback(() =>{
-        return showRecent
-            ? movieData.filter((movie) => movie.releaseDate.getFullYear() > 2025 )
-            : movieData;
-    }, [showRecent,movieData])
+    // const filteredMovies = useCallback(() =>{
+    //     return showRecent
+    //         ? movieData.filter((movie) => movie.releaseDate.getFullYear() > 2025 )
+    //         : movieData;
+    // }, [showRecent,movieData])
     
     if(loading){
         return <p>Cargando Peliculas ... </p>;
     }
     return (
        <>
-            <button onClick={()=> setShowRecent(!showRecent) }> 
+            <button onClick={toggleShowRecent}> 
                 { showRecent ? "Mostrar todas las pelucias" : "Mostrar las recientes"}
             </button>
 
             <p>
                 Bienvenido {username}!
             </p>
-            {filteredMovies().length > 0 
-            ? filteredMovies().map((movie: Movie) => (
-                <PrintMovie key = {movie.id} movie = { movie} />
+            {filteredMovies.length > 0 
+            ? filteredMovies.map((movie: Movie) => (
+                <PrintMovie key = {movie.id} movie = {movie} />
                 ))
             : 
             (<p>No se encontratron peliculas</p>)
-            }
-
-            
+            }            
        </>
-    )
-    
+    )    
 }
 
 export default MovieList
