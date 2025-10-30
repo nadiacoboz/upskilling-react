@@ -2,7 +2,8 @@
 import './App.css'
 //import PrintMovie from './components/PrintMovie/PrintMovie'
 import MovieList from './components/PrintMovie/MovieList'
-import { movieList } from './mocks/movies.mocks'
+import UserForm from './components/userForm/UserForm'
+import {mockMovie, movieList } from './mocks/movies.mocks'
 /*
 function PrintMovie(): JSX.Element{
   return(
@@ -32,17 +33,21 @@ function App() {
       .map((movie) => (
         <PrintMovie key={movie.id} movie = {movie} />
       )
-      )}
+    )}
  
-    <h1>Movies con palabra clave </h1>
+      <h1>Movies con palabra clave </h1>
       {movieList.map((movie) => (
             movie.description.includes("to") ? (<PrintMovie key={movie.id} movie={movie} />) : null
        
        
         ))} */}
+
+      {/* <MovieList movies = {movieList}/> */}
  
-        <MovieList movies = {movieList}/>
- 
+      <div>
+        <h2>Formularios del Usuario:</h2>
+        <UserForm />
+      </div> 
    </>
    
  )

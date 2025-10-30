@@ -7,28 +7,10 @@ import useUser from "../../hooks/useUser";
 import useMovies from "../../hooks/useMovie";
 
 function MovieList({movies}: MovieListProps): JSX.Element{
-    // const [showRecent, setShowRecent] = useState<boolean>(false);
-    // const [loading, setLoading] = useState<boolean>(true);
-    // const [movieData, setMovieData] = useState<Movie[]>([]);
+    
     const {loading, movies: filteredMovies, showRecent, toggleShowRecent} = useMovies(movies);
     const {username} = useUser();
-    
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setMovieData(movies);
-    //         setLoading(false);
-    //     }, 2000)
-    // }, [movies]);
-
-   // const filteredMovies = showRecent
-   // ? movieData.filter((movie) => movie.releaseDate.getFullYear() > 2025 )
-   // : movieData;
-    // const filteredMovies = useCallback(() =>{
-    //     return showRecent
-    //         ? movieData.filter((movie) => movie.releaseDate.getFullYear() > 2025 )
-    //         : movieData;
-    // }, [showRecent,movieData])
-    
+  
     if(loading){
         return <p>Cargando Peliculas ... </p>;
     }
@@ -47,7 +29,8 @@ function MovieList({movies}: MovieListProps): JSX.Element{
                 ))
             : 
             (<p>No se encontratron peliculas</p>)
-            }            
+            }
+            
        </>
     )    
 }
