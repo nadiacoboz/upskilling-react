@@ -5,4 +5,5 @@ export interface UseMoviesResult{
     movies: Movie[];
     showRecent: boolean;
     toggleShowRecent: () => void;
+    error: string | null;
 }

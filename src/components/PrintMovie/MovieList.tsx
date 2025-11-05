@@ -1,14 +1,16 @@
 //import { useCallback, useEffect, useState, type JSX } from "react"
 import { type JSX } from "react"
-import type { MovieListProps } from "./types";
+//import type { MovieListProps } from "./types";
 import PrintMovie from "./PrintMovie";
 import type { Movie } from "../../types/movie";
 import useUser from "../../hooks/useUser";
 import useMovies from "../../hooks/useMovie";
 
-function MovieList({movies}: MovieListProps): JSX.Element{
+//function MovieList({movies}: MovieListProps): JSX.Element{
+function MovieList(): JSX.Element{
     
-    const {loading, movies: filteredMovies, showRecent, toggleShowRecent} = useMovies(movies);
+    //const {loading, movies: filteredMovies, showRecent, toggleShowRecent} = useMovies(movies);
+    const {loading, movies: filteredMovies, showRecent, toggleShowRecent} = useMovies();
     const {username} = useUser();
   
     if(loading){
@@ -25,7 +27,7 @@ function MovieList({movies}: MovieListProps): JSX.Element{
             </p>
             {filteredMovies.length > 0 
             ? filteredMovies.map((movie: Movie) => (
-                <PrintMovie key = {movie.id} movie = {movie} />
+                <PrintMovie key = {movie.movieId} movie = {movie} />
                 ))
             : 
             (<p>No se encontratron peliculas</p>)
