@@ -2,11 +2,13 @@ import { useState } from "react";
 import type { UserFormData } from "../../types/user";
 import type { UseUserFormReturn } from "./types";
 import { validate_email, validate_username } from "../../utils/formValidation/formValidation";
+import { useNavigate } from "react-router-dom";
 
 function useUserForm(initialState: Omit<UserFormData,'id'>): UseUserFormReturn{
     const [formData, setFormData] = useState<Omit<UserFormData,'id'>>(initialState);
     const [errors, setErrors] = useState<Record<string, string>>({});
-  
+    const navigate = useNavigate();
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
         setFormData(prev => ({...prev, [name]: value}))
@@ -36,6 +38,7 @@ function useUserForm(initialState: Omit<UserFormData,'id'>): UseUserFormReturn{
         setErrors({});
 
         console.log(formData);
+        navigate("/", {replace:true});
     }
 
     return {formData, errors, handleChange, handleSubmit}

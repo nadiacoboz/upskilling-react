@@ -1,22 +1,36 @@
 import type { JSX } from "react"
 import type { movieProps } from "./types"
-  
+import { Button, Card } from "react-bootstrap"
+import { Link } from "react-router"
+ 
+ 
 function PrintMovie({movie}:movieProps): JSX.Element{
-return(
-    <>
-    <h3>ID {movie.movieId} </h3>
-    <h3>Title:{movie.title} </h3>
-    <h3>Description: {movie.description}</h3>
-    <div>
-        <img 
-            src={movie.pictureUrl} 
-            style={{width: "200px", height: "auto", borderRadius: "8px" }} 
-            />
-    </div>
-    <h3>releaseDate: {movie.releaseDate.toISOString().split('T')[0] }</h3>
-    
-    </>
-)
+    return(
+        <>
+            <Card style={{ width: '19rem' }}>
+            <Card.Img variant="top" src= {movie.pictureUrl}
+            alt={`Movie poster ${movie.title}`}
+            style={{width: "300px", objectFit:'cover' }}/>
+            <Card.Body>
+                <Card.Title>{movie.title}</Card.Title>
+                <Card.Subtitle>RD: {movie.releaseDate.toISOString().split('T')[0]}</Card.Subtitle>
+                <Card.Text> 
+                {movie.description}
+                </Card.Text>
+            </Card.Body>
+            <Card.Footer>
+                <Card.Text>
+                    <Link to={`/movies/${movie.movieId}`} >
+                        <Button variant="light" size="sm">
+                            Movie detail
+                        </Button>
+                    </Link>
+                </Card.Text>
+            </Card.Footer>
+            </Card>
+        </>
+    )
  
 }
 export default PrintMovie
+ 

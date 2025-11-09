@@ -1,18 +1,17 @@
-import { useRoutes } from 'react-router-dom'
-import './App.css'
-import { appRoutes } from './routes/routes';
-import { Suspense } from 'react';
+import { Suspense } from "react";
+import { useRoutes } from "react-router-dom";
+import Main from "./components/layout/Main";
+import { appRoutes } from "./routes/routes";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const routing = useRoutes(appRoutes);
- return (
-   <>
-    <h1>Catálogo de Peliculas Accenture</h1>
-    <hr/>
-    <Suspense fallback={<p>Loading...</p>}>{routing}</Suspense>
+  return (
+    <>
+      <Suspense fallback={<p>Loading...</p>}>{routing}</Suspense>      
+    </>
     
-   </>   
- )
+  );
 }
 
-export default App
+export default App;
