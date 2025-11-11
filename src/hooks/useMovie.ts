@@ -16,15 +16,16 @@ function useMovies(): UseMoviesResult {
             setLoading(true);
             setError(null);
  
-            //const res = await fetch("https://app-react-course-bk.azurewebsites.net/api/movie/catalog", //"https://localhost:44363/api/movie/catalog"
-            const res = await api.get("https://app-react-course-bk.azurewebsites.net/api/movie/catalog", {signal: controller.signal});
+            //const res = await fetch("https://localhost:44300/api/movie/catalog", {signal: controller.signal});
+            //const res = await api.get("https://localhost:44300/api/movie/catalog", {signal: controller.signal});
+            const res = await api.get("https://app-react-couse-bk-htbzbpb6g9huh6em.centralus-01.azurewebsites.net/api/movie/catalog", {signal: controller.signal});
  
             // if(!res.ok){
             //     throw new Error(`HTTP ${res.status} - ${res.statusText}`);
             // }
             //const data = await res.json();
             const data = res.data as Array<Movie>;
-
+//console.log(data);
             const normalized:Movie[] = data.map((movie: Movie) => ({
                 ...movie,
                 releaseDate:new Date(movie.releaseDate)
@@ -53,7 +54,7 @@ function useMovies(): UseMoviesResult {
  
     const filteredMovies = useCallback(() =>{
         return showRecent
-    ? movieData.filter((movie) => movie.releaseDate.getFullYear()>2025)
+    ? movieData.filter((movie) => movie.releaseDate.getFullYear()>2020)
     : movieData;
 },[showRecent, movieData]);
  
