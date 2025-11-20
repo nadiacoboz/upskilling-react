@@ -1,4 +1,5 @@
 import "./App.css";
+import MovieList from "./components/PrintMovie/MovieList";
 import PrintMovie from "./components/PrintMovie/PrintMovie";
 import { mockMovie, movieList } from "./mocks/movie.mocks";
 
@@ -7,7 +8,7 @@ function App() {
     <>      
       <h1>Catálogo de Peliculas Acceture</h1>
       <hr/>
-      <h1><PrintMovie movie={mockMovie} /></h1>     
+      {/* <h1><PrintMovie movie={mockMovie} /></h1>      */}
 
       {/* {JSON.stringify(movieList)} */}
 
@@ -16,9 +17,11 @@ function App() {
         .map((movie) => (<PrintMovie key={movie.id} movie={movie} />)        
       )} */}
 
-      {movieList.map((movie) => 
+      {/* {movieList.map((movie) => 
         movie.description.includes("to") ? (<PrintMovie key={movie.id} movie={movie} />) : null
-      )}
+      )} */}
+
+      <MovieList movies={movieList} />
     </>
   )
 }

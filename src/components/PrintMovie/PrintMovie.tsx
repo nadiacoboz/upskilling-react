@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import type { movieProps } from "./type";
+import type { movieProps } from "./types";
 
 function PrintMovie({movie}: movieProps): JSX.Element {
   return (
