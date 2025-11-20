@@ -1,13 +1,14 @@
 import type { Movie } from "../types/movie";
-import { getRandomDate } from "../utils/utils.date";
+import { getRandomDate } from "../utils/date.utils";
 
 export const mockMovie: Movie = {
-    id: 512,
+    id: 1,
     title: 'Citizen Kane',
-    description: 'This file examines the file of Kane',
-    pictureURL: 'imgURL',
+    description: 'This film examines the life of Kane',
+    pictureURL: 'imageURL',
     releaseDate: new Date('1941-10-25')
 }
+
 
 export const movieList: Movie[] = [
     {
