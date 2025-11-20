@@ -1,3 +1,4 @@
+//Consumida de forma global
 export interface Movie{
     id: number;
     title: string;
