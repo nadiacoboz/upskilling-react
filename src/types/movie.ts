@@ -1,7 +1,8 @@
+//Consumida de forma global
 export interface Movie{
     id: number;
     title: string;
-    description: string;
-    pictureURL: string;
+    descripcion: string;
+    pictureUrl?: string;
     releaseDate: Date;
 }
