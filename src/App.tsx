@@ -11,8 +11,13 @@ function App() {
 
       {/* {JSON.stringify(movieList)} */}
 
-      {movieList.map((movie) =>
-        <PrintMovie key={movie.id} movie={movie} />
+      {/* {movieList
+        .filter((movie) => movie.releaseDate.getFullYear() >= 2024)
+        .map((movie) => (<PrintMovie key={movie.id} movie={movie} />)        
+      )} */}
+
+      {movieList.map((movie) => 
+        movie.description.includes("to") ? (<PrintMovie key={movie.id} movie={movie} />) : null
       )}
     </>
   )
