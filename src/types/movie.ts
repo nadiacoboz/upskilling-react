@@ -2,7 +2,7 @@
 export interface Movie{
     id: number;
     title: string;
-    descripcion: string;
-    pictureUrl?: string;
+    description: string;
+    pictureURL: string;
     releaseDate: Date;
 }
